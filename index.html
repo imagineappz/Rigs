@@ -1,0 +1,160 @@
+<html><head>
+    <meta name="viewport" content="width=device-width, initial-scale=.9">
+    <style>
+    html {
+        /* float: center; 
+        width: 480px; */
+        /* border: 3px solid #8AC007; */
+        padding: 10px;
+        max-width: 800;
+        
+        /*background: url('https://goo.gl/04j7Nn');*/
+        background: url('https://dl.dropbox.com/s/ri3e1bwazx0ngvn/bo_play_pattern.png?dl=0');
+        min-height: 500px;
+        background-attachment: fixed;
+        /*background-position: center center;*/
+        */background-repeat: repeat;*/
+        background-size: cover;
+        
+        /* -webkit-text-stroke: 1px black;*/
+        font-family: 'Shift', sans-serif;
+        text-shadow: 2px 2px 3px gray; 
+
+
+    }
+    
+    #wrap {
+        
+        width: 480px; 
+        margin: 0 auto;
+        
+         
+    }
+
+    input, textarea {
+        max-width:100%
+    }
+
+    #button, #button2 {
+        background-color: #1d4ea3;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius:5px;
+        color: white;
+
+        font-size: 24px;
+        text-decoration: 2px;
+        cursor: pointer;
+        border:none;
+        box-shadow: 1px 1px 1px #777;
+    }
+
+    #button:hover, #button2:hover {
+
+        background: black;
+        box-shadow: 4px 4px 5px #777;
+        
+    }
+    div.head {
+
+
+        font-weight: bold;
+        padding-top: 14px;
+        padding-bottom: 14px;
+        padding-left: 30px;
+        position: relative;
+        z-index: 2;
+        background-color: #a6a6a6;
+        opacity: .6;
+        box-shadow: 10px 10px
+
+    }
+
+    div.sub {
+
+        margin: 5px;
+        font-size: 20px;
+        padding-top: 10px;
+        padding-bottom: 14px;
+        padding-left: 30px;
+        position: center;
+        z-index: 4;
+        background-color: #aaccff;
+        opacity: .6;
+        box-shadow: 10px 10px;
+
+    }
+
+    div.links {
+
+        box-shadow: 10px 10px;
+        padding: 30px;
+        position: relative;
+        z-index: 2;
+        background-color: #a6a6a6;
+        opacity: .6;
+
+    }
+
+
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="head">
+<h1> ESP32 Control </h1>
+</div>
+
+<div class="sub">
+
+    <ul>
+    <li> <a href="http://blynk-cloud.com/U94h_6N5vw8lk3GVnzVZ9pAhC7RvdWQZ/update/D23?value=1"> ON </a>
+    </li><li> <a href="http://blynk-cloud.com/U94h_6N5vw8lk3GVnzVZ9pAhC7RvdWQZ/update/D23?value=0"> OFF </a>
+    </li></ul>
+
+
+<button type="button" id="button" onmousedown="ON(18)" onmouseup="OFF(18)"> RIG 1 - PowerButton </button>
+
+<br>
+
+<button type="button" id="button2" onmousedown="ON(25)" onmouseup="OFF(25)"> RIG 2 - PowerButton </button>
+
+
+</div>
+
+<script>
+
+    function ON(pin) {
+            
+            const http = new XMLHttpRequest()
+
+            http.open("GET", "http://blynk-cloud.com/EOtqfLV6sWJ7qL7iewwWH0qWjNoeoFni/update/D" + pin + "?value=1")
+            http.send()
+
+            http.onload = () => console.log(http.responseText)
+        }
+
+    function OFF(pin) {
+            
+            const http = new XMLHttpRequest()
+
+            http.open("GET", "http://blynk-cloud.com/EOtqfLV6sWJ7qL7iewwWH0qWjNoeoFni/update/D" + pin + "?value=0")
+            http.send()
+
+            http.onload = () => console.log(http.responseText)
+        }
+
+
+</script>
+
+
+
+
+
+
+
+</body></html>
